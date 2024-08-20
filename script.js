@@ -1,20 +1,32 @@
-document.getElementById('add-task').addEventListener('click', function() {
-    const taskInput = document.getElementById('new-task');
-    const taskText = taskInput.value.trim();
 
-    if (taskText !== "") {
-        const li = document.createElement('li');
-        li.textContent = taskText;
+document.addEventListener('DOMContentLoaded', () => {
+    const addTaskButton = document.getElementById('addTaskButton');
+    const taskInput = document.getElementById('taskInput');
+    const taskList = document.getElementById('taskList');
 
-        const deleteButton = document.createElement('button');
-        deleteButton.textContent = 'Remover';
-        deleteButton.addEventListener('click', function() {
-            li.remove();
-        });
+    addTaskButton.addEventListener('click', () => {
+        if (taskInput.value.trim() !== '') {
+            const li = document.createElement('li');
+            li.innerHTML = `
+                <span class="task-text">${taskInput.value}</span>
+                <button class="edit-btn">&#9998;</button>
+                <button class="delete-btn">🗑️</button>
+            `;
+            taskList.appendChild(li);
+            taskInput.value = '';
 
-        li.appendChild(deleteButton);
-        document.getElementById('task-list').appendChild(li);
+            // Add event listeners for edit and delete buttons
+            li.querySelector('.edit-btn').addEventListener('click', (e) => {
+                const taskText = e.target.previousElementSibling;
+                const newTask = prompt('Edite a tarefa:', taskText.textContent);
+                if (newTask !== null && newTask.trim() !== '') {
+                    taskText.textContent = newTask;
+                }
+            });
 
-        taskInput.value = '';
-    }
+            li.querySelector('.delete-btn').addEventListener('click', () => {
+                taskList.removeChild(li);
+            });
+        }
+    });
 });

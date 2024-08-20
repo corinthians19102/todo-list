@@ -1,50 +1,49 @@
+
 body {
-    background-color: rgb(25, 80, 441);
     font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
+    background-color: darkblue;
     margin: 0;
+    padding: 0;
 }
 
-.todo-container {
-    background-color: rgb(10, 25, 400);
-    color: white;
+.container {
+    width: 80%;
+    max-width: 600px;
+    margin: 20px auto;
     padding: 20px;
-    border-radius: 50px;
-    width: 300px;
-    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background: #fff;
+    border-radius: 8px;
+    box-shadow: 0 0 10px rgba(0,0,0,0.1);
 }
 
 h1 {
-    text-align: center;
+    margin-top: 0;
 }
 
-#new-task {
-    width: calc(100% - 22px);
-    padding: 10px;
-    border-radius: 5px;
-    border: none;
-    margin-bottom: 10px;
+.input-section {
+    display: flex;
+    margin-bottom: 20px;
 }
 
-#add-task {
-    background-color: #e74c3c; 
-    color: white;
+#taskInput {
+    flex: 1;
     padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 4px;
+}
+
+#addTaskButton {
+    padding: 10px 20px;
     border: none;
-    border-radius: 80px;
+    background-color: darkred;
+    color: #fff;
+    border-radius: 4px;
     cursor: pointer;
-    width: 100%;
-    font-size: 16px;
-    box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.3); 
-    transition: background-color 0.3s ease, box-shadow 0.3s ease;
+    margin-left: 10px;
 }
 
-#add-task:hover {
-    background-color: #c0392b;
-    box-shadow: 0px 6px 8px rgba(0, 0, 0, 0.4); 
+#addTaskButton:hover {
+    background-color: red;
 }
 
 ul {
@@ -53,25 +52,36 @@ ul {
 }
 
 li {
-    background-color: white;
-    color: blue;
-    padding: 10px;
-    margin-bottom: 5px;
-    border-radius: 5px;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 10px;
+    border-bottom: 1px solid #ddd;
 }
 
-li button {
-    background-color: red;
-    color: white;
+li:last-child {
+    border-bottom: none;
+}
+
+.task-text {
+    flex: 1;
+}
+
+.edit-btn, .delete-btn {
+    background: none;
     border: none;
-    border-radius: 5px;
     cursor: pointer;
-    padding: 5px;
+    margin-left: 5px;
 }
 
-li button:hover {
-    background-color: darkred;
+.edit-btn {
+    color: #007bff;
+}
+
+.delete-btn {
+    color: #dc3545;
+}
+
+.edit-btn:hover, .delete-btn:hover {
+    opacity: 0.8;
 }
